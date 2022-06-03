@@ -33,7 +33,7 @@
 
   <form method="post" action="convertFile" enctype="multipart/form-data">
     <div>
-      <label for="file">Choose a file</label>
+      <label for="file">Choose the file</label>
       <input type="file" id="file" name="file">
     </div>
     <div>
