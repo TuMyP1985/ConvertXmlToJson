@@ -31,14 +31,17 @@ public class ConvectorRestController {
     @Consumes(MediaType.MULTIPART_FORM_DATA_VALUE)
     public @ResponseBody ResponseEntity  convertFile(
             @RequestParam MultipartFile  file
-    ) throws IOException {
+    )  {
+        try {
+            String text_xml = new String(file.getBytes(), StandardCharsets.UTF_8);
+            JSONObject json = XML.toJSONObject(text_xml);
+            String jsonString = json.toString(4);
 
-        String text_xml = new String(file.getBytes(), StandardCharsets.UTF_8);
-        JSONObject json = XML.toJSONObject(text_xml);
-        String jsonString = json.toString(4);
+            return new ResponseEntity(jsonString.getBytes(), HttpStatus.OK);
 
-        return new ResponseEntity(jsonString.getBytes(), HttpStatus.OK);
-
+        }catch (Exception e) {
+            return new ResponseEntity("bad file",HttpStatus.BAD_REQUEST);
+        }
     }
 }
 
