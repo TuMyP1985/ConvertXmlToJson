@@ -7,7 +7,7 @@
 
   <form  method="post" action="convert">
     <p><b>Input your xml:</b></p>
-    <p><textarea rows="100" cols="100" required name="text_xml" id="text_xml">
+    <p><textarea rows="20" cols="80" required name="text_xml" id="text_xml">
 
         <?xml version="1.0" encoding="UTF-8"?>
           <PropertyList>
@@ -31,7 +31,15 @@
 
   </form>
 
-
+  <form method="post" action="convertFile" enctype="multipart/form-data">
+    <div>
+      <label for="file">Choose a file</label>
+      <input type="file" id="file" name="file">
+    </div>
+    <div>
+      <button>Send file xml</button>
+    </div>
+  </form>
 
   </body>
 </html>
